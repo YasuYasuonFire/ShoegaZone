@@ -1,23 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "ShoegaZone - シューゲイザー・オルタナティブロック特化音楽アプリ",
-  description: "Sunoで生成されたシューゲイザー・オルタナティブロック楽曲に特化した音楽発見・再生アプリケーション",
-  keywords: ["shoegaze", "シューゲイザー", "alternative rock", "オルタナティブロック", "suno", "AI music", "音楽アプリ"],
+  title: "ShoegaZone - Dreamy Shoegaze & Alternative Music Platform",
+  description: "Discover and explore AI-generated shoegaze and alternative rock soundscapes. Curated atmospheric music for deep listening experiences.",
+  keywords: ["shoegaze", "alternative rock", "suno", "AI music", "atmospheric", "ethereal", "dreamy", "music discovery"],
+  openGraph: {
+    title: "ShoegaZone - Dreamy Shoegaze & Alternative Music",
+    description: "Immerse yourself in AI-crafted shoegaze and alternative soundscapes",
+    type: "website",
+  },
   authors: [{ name: "ShoegaZone Team" }],
   creator: "ShoegaZone",
   publisher: "ShoegaZone",
@@ -40,13 +47,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className="dark">
+    <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${poppins.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-background text-foreground`}
       >
-        <div className="min-h-screen bg-atmosphere-gradient">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );
