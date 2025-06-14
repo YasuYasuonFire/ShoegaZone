@@ -6,6 +6,7 @@ export interface ShoegazeTrack {
   duration: number;
   audioUrl: string;
   coverImageUrl?: string;
+  coverUrl?: string; // Add this for backward compatibility
   sunoId: string;
   
   // ジャンル特化フィールド
