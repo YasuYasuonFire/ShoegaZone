@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Play, Pause, SkipBack, SkipForward, Volume2, Shuffle, Repeat, Search, Heart } from 'lucide-react';
 import { ShoegazeTrack } from '@/types';
 
@@ -220,9 +221,11 @@ export default function Home() {
                   <div key={track.id} className="group relative">
                     <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
                       <div className="aspect-square relative">
-                        <img 
-                          src={track.coverUrl} 
+                        <Image 
+                          src={track.coverUrl!} 
                           alt={track.title}
+                          width={300}
+                          height={300}
                           className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -269,9 +272,11 @@ export default function Home() {
                   <div key={track.id} className="group">
                     <div className="flex items-center space-x-4 p-4 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300">
                       <div className="relative">
-                        <img 
-                          src={track.coverUrl} 
+                        <Image 
+                          src={track.coverUrl!} 
                           alt={track.title}
+                          width={64}
+                          height={64}
                           className="w-16 h-16 rounded-lg object-cover opacity-80"
                         />
                         <button 
@@ -333,9 +338,11 @@ export default function Home() {
         {activeTab === 'player' && selectedTrack && (
           <div className="max-w-2xl mx-auto text-center space-y-8">
             <div className="relative">
-              <img 
-                src={selectedTrack.coverUrl} 
+              <Image 
+                src={selectedTrack.coverUrl!} 
                 alt={selectedTrack.title}
+                width={320}
+                height={320}
                 className="w-80 h-80 mx-auto rounded-3xl object-cover shadow-2xl"
               />
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -410,9 +417,11 @@ export default function Home() {
         <div className="fixed bottom-0 left-0 right-0 backdrop-blur-xl bg-black/40 border-t border-white/10 p-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <img 
-                src={selectedTrack.coverUrl} 
+              <Image 
+                src={selectedTrack.coverUrl!} 
                 alt={selectedTrack.title}
+                width={48}
+                height={48}
                 className="w-12 h-12 rounded-lg object-cover"
               />
               <div className="min-w-0">
