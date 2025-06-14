@@ -1,26 +1,104 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Shoegaze-themed CSS variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark theme colors */
+  --background: #0a0a0f;
+  --background-secondary: #131318;
+  --background-tertiary: #1a1a24;
+  --foreground: #f8f8ff;
+  --foreground-secondary: #d1d1db;
+  --foreground-tertiary: #9999a8;
+  
+  /* Dreamy accent colors */
+  --dream-pink: #e8b4d4;
+  --dream-blue: #b4d4e8;
+  --dream-purple: #c4b4e8;
+  --dream-lavender: #d4c4e8;
+  
+  /* Atmospheric colors */
+  --atmosphere-indigo: #3b2f5f;
+  --atmosphere-purple: #4a3268;
+  --atmosphere-slate: #2d2d36;
+  --atmosphere-mist: #48485a;
+  
+  /* Interactive elements */
+  --primary: #c4b4e8;
+  --primary-hover: #d4c4e8;
+  --secondary: #e8b4d4;
+  --border: #2d2d36;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Poppins', system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(180deg, var(--background) 0%, var(--background-secondary) 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--atmosphere-slate);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--atmosphere-mist);
+}
+
+/* Glassmorphism effect utility */
+.glass-effect {
+  background: rgba(26, 26, 36, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dreamy glow effects */
+.dreamy-glow {
+  box-shadow: 0 0 20px rgba(196, 180, 232, 0.3);
+}
+
+.atmospheric-glow {
+  box-shadow: 0 0 30px rgba(59, 47, 95, 0.2);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--dream-purple);
+  color: var(--background);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }

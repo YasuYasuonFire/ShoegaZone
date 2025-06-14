@@ -70,6 +70,25 @@ The app uses keyword-based filtering to identify shoegaze and alternative tracks
 - Image optimization: WebP/AVIF support
 - Preloading for smooth playback
 
+## Development Commands
+
+**Build and Development:**
+- `npm run dev` - Start development server (http://localhost:3000)
+- `npm run build` - Build production bundle
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+**Testing:**
+- No test framework configured yet
+
 ## Project Status
 
-This repository is currently in the planning phase with only requirement documentation. No code has been implemented yet.
+Basic project structure has been implemented with:
+- Next.js 14+ with App Router and TypeScript
+- Tailwind CSS configured with shoegaze-themed dark colors
+- Framer Motion for animations
+- Zustand for state management
+- Basic layout components and landing page
+- TypeScript interfaces for core data types
+
+The project is ready for feature development and API integration.
