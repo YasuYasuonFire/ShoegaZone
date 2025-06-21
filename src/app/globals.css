@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Shoegaze-themed CSS variables */
+/* Shoegaze-themed CSS variables - Updated to mint green theme */
 :root {
   /* Dark theme colors */
   --background: #0a0a0f;
@@ -11,22 +11,22 @@
   --foreground-secondary: #d1d1db;
   --foreground-tertiary: #9999a8;
   
-  /* Dreamy accent colors */
-  --dream-pink: #e8b4d4;
-  --dream-blue: #b4d4e8;
-  --dream-purple: #c4b4e8;
-  --dream-lavender: #d4c4e8;
+  /* Dreamy accent colors - Updated to mint/green theme */
+  --dream-mint: #a8e6cf;
+  --dream-seafoam: #b8f2d4;
+  --dream-aqua: #a8e6e1;
+  --dream-sage: #c4e8d4;
   
-  /* Atmospheric colors */
-  --atmosphere-indigo: #3b2f5f;
-  --atmosphere-purple: #4a3268;
+  /* Atmospheric colors - Updated to green/teal theme */
+  --atmosphere-forest: #2d5a3f;
+  --atmosphere-sage: #3a5f4a;
   --atmosphere-slate: #2d2d36;
   --atmosphere-mist: #48485a;
   
-  /* Interactive elements */
-  --primary: #c4b4e8;
-  --primary-hover: #d4c4e8;
-  --secondary: #e8b4d4;
+  /* Interactive elements - Updated to mint green theme */
+  --primary: #a8e6cf;
+  --primary-hover: #b8f2d4;
+  --secondary: #a8e6e1;
   --border: #2d2d36;
 }
 
@@ -82,22 +82,22 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Dreamy glow effects */
+/* Dreamy glow effects - Updated to mint green theme */
 .dreamy-glow {
-  box-shadow: 0 0 20px rgba(196, 180, 232, 0.3);
+  box-shadow: 0 0 20px rgba(168, 230, 207, 0.3);
 }
 
 .atmospheric-glow {
-  box-shadow: 0 0 30px rgba(59, 47, 95, 0.2);
+  box-shadow: 0 0 30px rgba(45, 90, 63, 0.2);
 }
 
-/* Selection styling */
+/* Selection styling - Updated to mint green theme */
 ::selection {
-  background: var(--dream-purple);
+  background: var(--dream-mint);
   color: var(--background);
 }
 
-/* Focus styles */
+/* Focus styles - Updated to mint green theme */
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;

@@ -133,8 +133,8 @@ export default function Home() {
 
   const getMoodColors = (mood: string) => {
     const moodColorMap = {
-      dreamy: 'bg-purple-500/30 text-purple-200',
-      ethereal: 'bg-pink-500/30 text-pink-200',
+      dreamy: 'bg-emerald-500/30 text-emerald-200',
+      ethereal: 'bg-teal-500/30 text-teal-200',
       melancholic: 'bg-blue-500/30 text-blue-200',
       distorted: 'bg-red-500/30 text-red-200',
       uplifting: 'bg-green-500/30 text-green-200',
@@ -155,7 +155,7 @@ export default function Home() {
         {/* Header */}
         <header className="flex justify-between items-center mb-8 pb-5 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-semibold bg-gradient-to-r from-[#ff6b9d] to-[#c44569] bg-clip-text text-transparent">
+            <h1 className="text-3xl font-semibold bg-gradient-to-r from-[#a8e6cf] to-[#98d6bf] bg-clip-text text-transparent">
               ShoegaZone
             </h1>
             <span className="text-sm text-gray-400 ml-1">shoegaze • alternative</span>
@@ -172,7 +172,7 @@ export default function Home() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search tracks, artists, moods..."
-            className="w-full p-4 text-base bg-white/[0.08] border-2 border-white/10 rounded-xl text-white placeholder-gray-400 outline-none transition-all duration-300 focus:border-[#ff6b9d] focus:bg-white/[0.12]"
+            className="w-full p-4 text-base bg-white/[0.08] border-2 border-white/10 rounded-xl text-white placeholder-gray-400 outline-none transition-all duration-300 focus:border-[#a8e6cf] focus:bg-white/[0.12]"
           />
           <div className="flex gap-3 mt-4 flex-wrap">
             {['All', 'Dreamy', 'Melancholic', 'Ethereal', 'Uplifting'].map((filter) => (
@@ -181,7 +181,7 @@ export default function Home() {
                 onClick={() => setActiveFilter(filter)}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:bg-white/15 hover:-translate-y-px ${
                   activeFilter === filter 
-                    ? 'bg-gradient-to-r from-[#ff6b9d] to-[#c44569] border-transparent text-white' 
+                    ? 'bg-gradient-to-r from-[#a8e6cf] to-[#98d6bf] border-transparent text-white' 
                     : 'bg-white/[0.08] border border-white/20 text-gray-300'
                 }`}
               >
@@ -209,7 +209,7 @@ export default function Home() {
                     onClick={() => handlePlayPause(track)}
                     className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg"
                   >
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#ff6b9d] to-[#c44569] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-[0_4px_12px_rgba(255,107,157,0.4)]">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#a8e6cf] to-[#98d6bf] flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-[0_4px_12px_rgba(168,230,207,0.4)]">
                       {isPlaying && selectedTrack?.id === track.id ? 
                         <Pause className="w-5 h-5 text-white" /> : 
                         <div className="w-0 h-0 border-l-[8px] border-l-white border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent ml-1" />
@@ -250,7 +250,7 @@ export default function Home() {
               onClick={() => setViewMode('list')}
               className={`px-3 py-2 text-xs rounded-lg transition-all duration-300 ${
                 viewMode === 'list' 
-                  ? 'bg-[rgba(255,107,157,0.3)] border border-[#ff6b9d] text-white' 
+                  ? 'bg-[rgba(168,230,207,0.3)] border border-[#a8e6cf] text-white' 
                   : 'bg-white/[0.08] border border-white/20 text-gray-300 hover:bg-white/15'
               }`}
             >
@@ -260,7 +260,7 @@ export default function Home() {
               onClick={() => setViewMode('grid')}
               className={`px-3 py-2 text-xs rounded-lg transition-all duration-300 ${
                 viewMode === 'grid' 
-                  ? 'bg-[rgba(255,107,157,0.3)] border border-[#ff6b9d] text-white' 
+                  ? 'bg-[rgba(168,230,207,0.3)] border border-[#a8e6cf] text-white' 
                   : 'bg-white/[0.08] border border-white/20 text-gray-300 hover:bg-white/15'
               }`}
             >
@@ -307,7 +307,7 @@ export default function Home() {
               </button>
               <button 
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="p-4 bg-purple-600 hover:bg-purple-700 rounded-full transition-colors"
+                className="p-4 bg-primary hover:bg-primary-hover rounded-full transition-colors"
               >
                 {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
               </button>
