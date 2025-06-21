@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Play, Pause, SkipBack, SkipForward, Heart } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Heart, FileText, ChevronDown, ChevronUp } from 'lucide-react';
 import { ShoegazeTrack } from '@/types';
 
 export default function Home() {
@@ -12,6 +12,7 @@ export default function Home() {
   const [viewMode, setViewMode] = useState('list');
   const [sortBy, setSortBy] = useState('recent');
   const [selectedTrack, setSelectedTrack] = useState<ShoegazeTrack | null>(null);
+  const [showPrompt, setShowPrompt] = useState(false);
 
   // Mock data for demonstration
   const featuredTracks: ShoegazeTrack[] = [
@@ -27,6 +28,14 @@ export default function Home() {
       mood: ['dreamy', 'ethereal'],
       subGenre: 'shoegaze',
       characteristics: ["dreamy", "ethereal"],
+      generationPrompt: "Create a dreamy shoegaze track with ethereal vocals and reverb-heavy guitars, capturing the feeling of floating through clouds on a summer evening",
+      promptDetails: {
+        style: "Shoegaze, Dream Pop",
+        mood: "Dreamy, Ethereal, Uplifting",
+        instruments: "Electric guitars with heavy reverb, soft drums, synthesizers, atmospheric vocals",
+        lyrics: "Abstract imagery about dreams and clouds",
+        description: "A track that evokes the sensation of weightlessness and serenity"
+      },
       createdAt: new Date(),
       playCount: 1247,
       featured: true
@@ -43,6 +52,14 @@ export default function Home() {
       mood: ['distorted', 'melancholic'],
       subGenre: 'alternative',
       characteristics: ["distorted", "melancholic"],
+      generationPrompt: "Generate an alternative rock song with distorted guitars and melancholic vocals, reminiscent of 90s grunge but with a modern atmospheric touch",
+      promptDetails: {
+        style: "Alternative Rock, Grunge",
+        mood: "Melancholic, Raw, Nostalgic",
+        instruments: "Distorted electric guitars, driving bass, powerful drums, emotional vocals",
+        lyrics: "Introspective themes about lost connections",
+        description: "Raw emotion meets atmospheric production"
+      },
       createdAt: new Date(),
       playCount: 892,
       featured: true
@@ -59,6 +76,14 @@ export default function Home() {
       mood: ['uplifting', 'dreamy'],
       subGenre: 'dream-pop',
       characteristics: ["uplifting", "dreamy"],
+      generationPrompt: "Compose an uplifting dream pop song with shimmering guitars and celestial atmosphere, like watching shooting stars on a clear night",
+      promptDetails: {
+        style: "Dream Pop, Indie Pop",
+        mood: "Uplifting, Dreamy, Hopeful",
+        instruments: "Jangly guitars, ethereal keyboards, light percussion, soaring vocals",
+        lyrics: "Metaphors about stars and cosmic wonder",
+        description: "Optimistic and inspiring with celestial themes"
+      },
       createdAt: new Date(),
       playCount: 1456,
       featured: true
@@ -75,6 +100,14 @@ export default function Home() {
       mood: ['melancholic'],
       subGenre: 'shoegaze',
       characteristics: ["melancholic", "nostalgic"],
+      generationPrompt: "Create a nostalgic shoegaze composition with layers of reverb-drenched guitars and whispered vocals, evoking memories of forgotten summers",
+      promptDetails: {
+        style: "Shoegaze, Post-Rock",
+        mood: "Melancholic, Nostalgic, Introspective",
+        instruments: "Multiple layered guitars with extensive reverb, subtle bass, ambient drums, hushed vocals",
+        lyrics: "Nostalgic reflections on past memories",
+        description: "A sonic journey through faded photographs and distant memories"
+      },
       createdAt: new Date(),
       playCount: 743,
       featured: true
@@ -94,6 +127,14 @@ export default function Home() {
       mood: ['ethereal'],
       subGenre: 'shoegaze',
       characteristics: ["ethereal"],
+      generationPrompt: "Generate an ethereal shoegaze track with glittery textures and floating melodies, like sunlight filtering through morning mist",
+      promptDetails: {
+        style: "Shoegaze, Ambient",
+        mood: "Ethereal, Peaceful, Transcendent",
+        instruments: "Ambient guitars, soft synthesizers, minimal drums, atmospheric vocals",
+        lyrics: "Abstract imagery about light and mist",
+        description: "Gentle and transcendent with sparkling textures"
+      },
       createdAt: new Date(),
       playCount: 0,
       featured: false
@@ -110,6 +151,14 @@ export default function Home() {
       mood: ['melancholic'],
       subGenre: 'alternative',
       characteristics: ["melancholic"],
+      generationPrompt: "Create a melancholic alternative song capturing the loneliness of suburban life with jangly guitars and introspective lyrics",
+      promptDetails: {
+        style: "Alternative Rock, Indie Rock",
+        mood: "Melancholic, Lonely, Contemplative",
+        instruments: "Clean jangly guitars, steady bass, simple drums, contemplative vocals",
+        lyrics: "Observations about suburban isolation",
+        description: "Reflective commentary on modern suburban existence"
+      },
       createdAt: new Date(),
       playCount: 0,
       featured: false
@@ -220,8 +269,25 @@ export default function Home() {
                 
                 {/* Track Info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-white mb-1 truncate">{track.title}</h3>
-                  <p className="text-sm text-gray-400 mb-1.5 truncate">{track.artist}</p>
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-lg font-semibold text-white mb-1 truncate">{track.title}</h3>
+                      <p className="text-sm text-gray-400 mb-1.5 truncate">{track.artist}</p>
+                    </div>
+                    {track.generationPrompt && (
+                      <button 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedTrack(track);
+                          setShowPrompt(true);
+                        }}
+                        className="p-1 rounded-full hover:bg-white/10 transition-colors group/prompt"
+                        title="生成プロンプトを表示"
+                      >
+                        <FileText className="w-4 h-4 text-gray-500 group-hover/prompt:text-[#a8e6cf]" />
+                      </button>
+                    )}
+                  </div>
                   <div className="flex gap-1.5 flex-wrap">
                     <span className={`px-2 py-1 rounded-xl text-xs font-medium ${getMoodColors(track.mood[0])}`}>
                       {track.mood[0]}
@@ -229,6 +295,11 @@ export default function Home() {
                     {track.featured && (
                       <span className={`px-2 py-1 rounded-xl text-xs font-medium ${getMoodColors('ethereal')}`}>
                         featured
+                      </span>
+                    )}
+                    {track.generationPrompt && (
+                      <span className="px-2 py-1 rounded-xl text-xs font-medium bg-purple-500/30 text-purple-200">
+                        AI生成
                       </span>
                     )}
                   </div>
@@ -299,6 +370,60 @@ export default function Home() {
                 {selectedTrack.mood[0]}
               </span>
             </div>
+
+            {/* Generation Prompt Section */}
+            {selectedTrack.generationPrompt && (
+              <div className="bg-white/5 rounded-xl p-4 text-left">
+                <button 
+                  onClick={() => setShowPrompt(!showPrompt)}
+                  className="flex items-center gap-2 w-full text-left hover:text-[#a8e6cf] transition-colors"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span className="text-sm font-medium">生成プロンプト</span>
+                  {showPrompt ? <ChevronUp className="w-4 h-4 ml-auto" /> : <ChevronDown className="w-4 h-4 ml-auto" />}
+                </button>
+                
+                {showPrompt && (
+                  <div className="mt-4 space-y-4">
+                    <div className="bg-white/5 rounded-lg p-3">
+                      <h4 className="text-xs text-gray-400 uppercase tracking-wide mb-2">メインプロンプト</h4>
+                      <p className="text-sm text-gray-300 leading-relaxed">
+                        {selectedTrack.generationPrompt}
+                      </p>
+                    </div>
+                    
+                    {selectedTrack.promptDetails && (
+                      <div className="grid grid-cols-1 gap-3">
+                        {selectedTrack.promptDetails.style && (
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <h4 className="text-xs text-gray-400 uppercase tracking-wide mb-1">スタイル</h4>
+                            <p className="text-sm text-gray-300">{selectedTrack.promptDetails.style}</p>
+                          </div>
+                        )}
+                        {selectedTrack.promptDetails.mood && (
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <h4 className="text-xs text-gray-400 uppercase tracking-wide mb-1">ムード</h4>
+                            <p className="text-sm text-gray-300">{selectedTrack.promptDetails.mood}</p>
+                          </div>
+                        )}
+                        {selectedTrack.promptDetails.instruments && (
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <h4 className="text-xs text-gray-400 uppercase tracking-wide mb-1">楽器構成</h4>
+                            <p className="text-sm text-gray-300">{selectedTrack.promptDetails.instruments}</p>
+                          </div>
+                        )}
+                        {selectedTrack.promptDetails.description && (
+                          <div className="bg-white/5 rounded-lg p-3">
+                            <h4 className="text-xs text-gray-400 uppercase tracking-wide mb-1">説明</h4>
+                            <p className="text-sm text-gray-300">{selectedTrack.promptDetails.description}</p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Simple Controls */}
             <div className="flex items-center justify-center space-x-6">
