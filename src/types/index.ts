@@ -15,6 +15,16 @@ export interface ShoegazeTrack {
   bpm?: number;
   characteristics: string[]; // ['reverb-heavy', 'layered-guitars', 'soft-vocals']
   
+  // プロンプト関連フィールド
+  generationPrompt?: string; // 楽曲生成時に使用したプロンプト
+  promptDetails?: {
+    style?: string;
+    mood?: string;
+    instruments?: string;
+    lyrics?: string;
+    description?: string;
+  };
+  
   createdAt: Date;
   playCount: number;
   featured: boolean; // キュレーション用
