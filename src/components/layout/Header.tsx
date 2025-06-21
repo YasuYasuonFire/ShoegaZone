@@ -29,16 +29,16 @@ export function Header() {
             whileTap={{ scale: 0.95 }}
             className="relative"
           >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-dream-purple to-dream-pink dreamy-glow" />
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-dream-mint to-dream-seafoam dreamy-glow" />
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 w-8 h-8 rounded-full border-2 border-dream-blue/30 border-t-dream-blue"
+              className="absolute inset-0 w-8 h-8 rounded-full border-2 border-dream-aqua/30 border-t-dream-aqua"
             />
           </motion.div>
           <div className="flex flex-col">
             <motion.h1
-              className="text-xl font-display font-semibold text-foreground group-hover:text-dream-purple transition-colors"
+              className="text-xl font-display font-semibold text-foreground group-hover:text-dream-mint transition-colors"
               whileHover={{ scale: 1.02 }}
             >
               ShoegaZone
