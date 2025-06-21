@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Shoegaze-themed color palette
+        // Shoegaze-themed color palette - Updated to mint green base
         background: {
           DEFAULT: '#0a0a0f', // Deep dark
           secondary: '#131318', // Slightly lighter dark
@@ -21,35 +21,35 @@ const config: Config = {
           secondary: '#d1d1db', // Muted text
           tertiary: '#9999a8', // Subtle text
         },
-        // Dreamy accent colors
+        // Dreamy accent colors - Updated to mint/green theme
         dream: {
-          pink: '#e8b4d4', // Soft pink
-          blue: '#b4d4e8', // Pale blue
-          purple: '#c4b4e8', // Soft purple
-          lavender: '#d4c4e8', // Light lavender
+          mint: '#a8e6cf', // Soft mint green
+          seafoam: '#b8f2d4', // Pale seafoam
+          aqua: '#a8e6e1', // Soft aqua
+          sage: '#c4e8d4', // Light sage green
         },
-        // Atmospheric colors
+        // Atmospheric colors - Updated to green/teal theme
         atmosphere: {
-          indigo: '#3b2f5f', // Deep indigo
-          purple: '#4a3268', // Deep purple
-          slate: '#2d2d36', // Slate gray
-          mist: '#48485a', // Misty gray
+          forest: '#2d5a3f', // Deep forest green
+          sage: '#3a5f4a', // Deep sage
+          slate: '#2d2d36', // Slate gray (kept for contrast)
+          mist: '#48485a', // Misty gray (kept for contrast)
         },
-        // Interactive elements
+        // Interactive elements - Updated to mint green theme
         primary: {
-          DEFAULT: '#c4b4e8', // Soft purple
-          hover: '#d4c4e8', // Lighter on hover
-          active: '#b4a4d8', // Darker when active
+          DEFAULT: '#a8e6cf', // Soft mint green
+          hover: '#b8f2d4', // Lighter on hover
+          active: '#98d6bf', // Darker when active
         },
         secondary: {
-          DEFAULT: '#e8b4d4', // Soft pink
-          hover: '#f8c4e4', // Lighter on hover
-          active: '#d8a4c4', // Darker when active
+          DEFAULT: '#a8e6e1', // Soft aqua
+          hover: '#b8f2e4', // Lighter on hover
+          active: '#98d6d1', // Darker when active
         },
         // UI states
         border: '#2d2d36',
         input: '#1a1a24',
-        ring: '#c4b4e8',
+        ring: '#a8e6cf',
         muted: {
           DEFAULT: '#131318',
           foreground: '#9999a8',
@@ -62,7 +62,7 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'dreamy-gradient': 'linear-gradient(135deg, #3b2f5f 0%, #4a3268 50%, #2d2d36 100%)',
+        'dreamy-gradient': 'linear-gradient(135deg, #2d5a3f 0%, #3a5f4a 50%, #2d2d36 100%)',
         'atmosphere-gradient': 'linear-gradient(180deg, #0a0a0f 0%, #131318 100%)',
       },
       backdropBlur: {
@@ -93,13 +93,14 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Poppins', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-outfit)', 'Outfit', 'system-ui', 'sans-serif'],
+        body: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-        'dreamy': '0 8px 32px 0 rgba(196, 180, 232, 0.1)',
-        'atmospheric': '0 4px 24px 0 rgba(59, 47, 95, 0.3)',
+        'dreamy': '0 8px 32px 0 rgba(168, 230, 207, 0.1)',
+        'atmospheric': '0 4px 24px 0 rgba(45, 90, 63, 0.3)',
       },
     },
   },
